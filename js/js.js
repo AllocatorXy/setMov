@@ -1,22 +1,3 @@
-window.onload = function () 
-{
-	var oDiv = document.getElementsByTagName('div')[0];
-
-	oDiv.onmouseover = function () 
-	{
-		setMov(this,'height',500,'1');
-		setMov(this,'width',500,'2');
-		setMov(this,'font-size',16,'3');
-	};
-	oDiv.onmouseout = function () 
-	{
-		setMov(this,'height',300,'1');
-		setMov(this,'width',300,'2');
-		setMov(this,'font-size',70,'3');
-	};
-};
-
-
 function setMov(obj, attr, iTar, timer) 
 {
 	clearInterval(obj[timer]);
@@ -52,3 +33,20 @@ function getStyle(obj,name)
 		//getComputedStyle函数中，第二个参数无用，任意设置
 	}
 }
+window.onload = function () 
+{
+	var oDiv = document.getElementsByTagName('div')[0];
+
+	oDiv.onmouseover = function () 
+	{
+		setMov(this,'height',500,'1');
+		setMov(this,'width',500,'2');
+		setMov(this,'font-size',16,'3');
+	};
+	oDiv.onmouseout = function () 
+	{
+		setMov(this,'height',300,'1');
+		setMov(this,'width',300,'2');
+		setMov(this,'font-size',70,'3');
+	};
+};
