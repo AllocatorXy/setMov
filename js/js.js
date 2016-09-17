@@ -47,7 +47,7 @@ function setMov(obj, attr, iTar, timer)
 		var realAttr = 0;
 		if (attr == 'opacity') // 透明度需要特别处理
 		{
-			realAttr = parseFloat(getStyle(obj,attr))*100;
+			realAttr =Math.round(parseFloat(getStyle(obj,attr))*100); //这里要四舍五入近似值
 		}
 		else
 		{
