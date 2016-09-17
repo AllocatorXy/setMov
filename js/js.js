@@ -1,8 +1,26 @@
 window.onload = function () 
 {
 	var oDiv = document.getElementsByTagName('div')[0];
+	var flag = 0;
 
-	oDiv.onmouseover = function () 
+	oDiv.onclick = function () 
+	{
+		if (flag === 0) 
+		{
+			setMov(this,'height',500,'1');
+			setMov(this,'width',500,'2');
+			setMov(this,'font-size',16,'3');
+			flag = 1;
+		}
+		else
+		{
+			setMov(this,'height',300,'1');
+			setMov(this,'width',300,'2');
+			setMov(this,'font-size',70,'3');
+			flag = 0;
+		}
+	};
+/*	oDiv.onmouseover = function () 
 	{
 		setMov(this,'height',500,'1');
 		setMov(this,'width',500,'2');
@@ -13,8 +31,9 @@ window.onload = function ()
 		setMov(this,'height',300,'1');
 		setMov(this,'width',300,'2');
 		setMov(this,'font-size',70,'3');
-	};
+	};*/
 };
+
 
 
 function setMov(obj, attr, iTar, timer) 
