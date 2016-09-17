@@ -10,6 +10,7 @@ window.onload = function ()
 			setMov(this,'height',500,'1');
 			setMov(this,'width',500,'2');
 			setMov(this,'font-size',16,'3');
+			setMov(this,'opacity',100,'4');
 			flag = 1;
 		}
 		else
@@ -17,6 +18,7 @@ window.onload = function ()
 			setMov(this,'height',300,'1');
 			setMov(this,'width',300,'2');
 			setMov(this,'font-size',70,'3');
+			setMov(this,'opacity',40,'4');
 			flag = 0;
 		}
 	};
@@ -42,7 +44,16 @@ function setMov(obj, attr, iTar, timer)
 
 	obj[timer] = setInterval(function () 
 	{
-		var realAttr = parseInt(getStyle(obj,attr));
+		var realAttr = 0;
+		if (attr == 'opacity') // 透明度需要特别处理
+		{
+			realAttr = parseFloat(getStyle(obj,attr))*100;
+		}
+		else
+		{
+			realAttr = parseInt(getStyle(obj,attr));
+		}
+
 		var speed = (iTar-realAttr)/10;
 		speed = speed>0?Math.ceil(speed):Math.floor(speed);
 
@@ -52,7 +63,15 @@ function setMov(obj, attr, iTar, timer)
 		}
 		else
 		{
-			obj.style[attr] = realAttr+speed+'px';
+			if (attr == 'opacity') 
+			{
+				obj.style.filter = 'alpha(opacity:'+(realAttr+speed)+')'; //ie
+				obj.style.opacity = (realAttr+speed)/100; //webkit etc
+			}
+			else
+			{
+				obj.style[attr] = realAttr+speed+'px';
+			}
 		}
 	}, 15);
 }
